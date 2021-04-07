@@ -103,6 +103,8 @@ void Grille::matriceToVectors(){
     //passage d'un array nommé grille de taille 9x9 de string à valeurs qui est une QList<QList<QString>>
     QList<QString> case1,case2,case3,case4,case5,case6,case7,case8,case9;
 
+    // on peut encore simplifier tout ca
+
     for(int i=0;i<3;i++)
         for (int j=0;j<3;j++)
             case1.append(QString::fromStdString(grille[i][j]));
@@ -147,45 +149,6 @@ void Grille::matriceToVectors(){
         for (int j=6;j<9;j++)
             case9.append(QString::fromStdString(grille[i][j]));
     valeurs.push_back(case9);
-
-//    for(int i =3;i<6;i++){case2.append(QString::fromStdString(grille[0][i]));}
-//    for(int i =3;i<6;i++){case2.append(QString::fromStdString(grille[1][i]));}
-//    for(int i =3;i<6;i++){case2.append(QString::fromStdString(grille[2][i]));}
-//    valeurs.push_back(case2);
-
-//    for(int i =6;i<9;i++){case3.append(QString::fromStdString(grille[0][i]));}
-//    for(int i =6;i<9;i++){case3.append(QString::fromStdString(grille[1][i]));}
-//    for(int i =6;i<9;i++){case3.append(QString::fromStdString(grille[2][i]));}
-//    valeurs.push_back(case3);
-
-//    for(int i =0;i<3;i++){case4.append(QString::fromStdString(grille[3][i]));}
-//    for(int i =0;i<3;i++){case4.append(QString::fromStdString(grille[4][i]));}
-//    for(int i =0;i<3;i++){case4.append(QString::fromStdString(grille[5][i]));}
-//    valeurs.push_back(case4);
-
-//    for(int i =3;i<6;i++){case5.append(QString::fromStdString(grille[3][i]));}
-//    for(int i =3;i<6;i++){case5.append(QString::fromStdString(grille[4][i]));}
-//    for(int i =3;i<6;i++){case5.append(QString::fromStdString(grille[5][i]));}
-//    valeurs.push_back(case5);
-
-//    for(int i =6;i<9;i++){case6.append(QString::fromStdString(grille[3][i]));}
-//    for(int i =6;i<9;i++){case6.append(QString::fromStdString(grille[4][i]));}
-//    for(int i =6;i<9;i++){case6.append(QString::fromStdString(grille[5][i]));}
-//    valeurs.push_back(case6);
-//    for(int i =0;i<3;i++){case7.append(QString::fromStdString(grille[6][i]));}
-//    for(int i =0;i<3;i++){case7.append(QString::fromStdString(grille[7][i]));}
-//    for(int i =0;i<3;i++){case7.append(QString::fromStdString(grille[8][i]));}
-//    valeurs.push_back(case7);
-//    for(int i =3;i<6;i++){case8.append(QString::fromStdString(grille[6][i]));}
-//    for(int i =3;i<6;i++){case8.append(QString::fromStdString(grille[7][i]));}
-//    for(int i =3;i<6;i++){case8.append(QString::fromStdString(grille[8][i]));}
-//    valeurs.push_back(case8);
-//    for(int i =6;i<9;i++){case9.append(QString::fromStdString(grille[6][i]));}
-//    for(int i =6;i<9;i++){case9.append(QString::fromStdString(grille[7][i]));}
-//    for(int i =6;i<9;i++){case9.append(QString::fromStdString(grille[8][i]));}
-//    valeurs.push_back(case9);
-
-
 }
 
 void Grille::colorer_X(int i, int l){
