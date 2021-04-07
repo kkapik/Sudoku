@@ -223,7 +223,7 @@ void Grille::colorer_X(int i, int j, int p,int q){
         }
     }
 }
-//****************
+
 void Grille::colorer_Y(int i, int j, int p, int q  ){
     int k =i;
     int m =p;
@@ -238,13 +238,10 @@ void Grille::colorer_Y(int i, int j, int p, int q  ){
 
 }
 
-//**********************
 void Grille::colorer_voisins( int Carre,int Case,bool focus){
-    cout << focus<< Carre << Case<< endl;
-
 
     if(focus){
-        // reset les couleurs au blanc
+        // reset les couleurs de toute la grille au blanc
         for(int k =0;k<9;k++){
             for(int j =0;j<9;j++){
 
@@ -256,61 +253,100 @@ void Grille::colorer_voisins( int Carre,int Case,bool focus){
             colors[Carre][k]="lavender";
         }
 
-        //colorer lignes horizantales
-        if(Carre==0||Carre==1||Carre==2){
-            if(Case==0||Case==1||Case==2)
-                colorer_X(0,3,0,3);
-            if(Case==3||Case==4||Case==5)
-                colorer_X(0,3,3,6);
-            if(Case==6||Case==7||Case==8)
-                colorer_X(0,3,6,9);
+        //colorer les lignes horizantales
+        switch(Carre/3){
+            case 0:
+                colorer_X(0,3,3*(Case/3),Case%3+3);
+                break;
+            case 1:
+                colorer_X(3,6,3*(Case/3),Case%3+3);
+                break;
+            case 2:
+                colorer_X(6,9,3*(Case/3),Case%3+3);
+                break;
         }
-        //***
-        if(Carre==3||Carre==4||Carre==5){
-            if(Case==0||Case==1||Case==2)
-                colorer_X(3,6,0,3);
-            if(Case==3||Case==4||Case==5)
-                colorer_X(3,6,3,6);
-            if(Case==6||Case==7||Case==8)
-                colorer_X(3,6,6,9);
-        }
-        //***
-        if(Carre==6||Carre==7||Carre==8){
-            if(Case==0||Case==1||Case==2)
-                colorer_X(6,9,0,3);
-            if(Case==3||Case==4||Case==5)
-                colorer_X(6,9,3,6);
-            if(Case==6||Case==7||Case==8)
-                colorer_X(6,9,6,9);
+        // colorer les lignes verticales
+        switch(Carre%3){
+            case 0:
+                if(Case/3==0)
+                    colorer_Y(0,7,0,7);
+                if(Case/3==1)
+                    colorer_Y(0,9,1,10);
+                if(Case/3==2)
+                    colorer_Y(0,9,2,11);
+                break;
+            case 1:
+                if(Case/3==0)
+                    colorer_Y(1,8,0,7);
+                if(Case/3==1)
+                    colorer_Y(1,8,1,8);
+                if(Case/3==2)
+                    colorer_Y(1,8,2,9);
+                break;
+            case 2:
+                if(Case/3==0)
+                    colorer_Y(2,9,0,7);
+                if(Case/3==1)
+                    colorer_Y(2,9,1,8);
+                if(Case/3==2)
+                    colorer_Y(2,9,2,9);
+                break;
         }
 
+//        if(Carre==0||Carre==1||Carre==2){
+//            if(Case==0||Case==1||Case==2)
+//                colorer_X(0,3,0,3);
+//            if(Case==3||Case==4||Case==5)
+//                colorer_X(0,3,3,6);
+//            if(Case==6||Case==7||Case==8)
+//                colorer_X(0,3,6,9);
+//        }
+//
+//        if(Carre==3||Carre==4||Carre==5){
+//            if(Case==0||Case==1||Case==2)
+//                colorer_X(3,6,0,3);
+//            if(Case==3||Case==4||Case==5)
+//                colorer_X(3,6,3,6);
+//            if(Case==6||Case==7||Case==8)
+//                colorer_X(3,6,6,9);
+//        }
+//
+//        if(Carre==6||Carre==7||Carre==8){
+//            if(Case==0||Case==1||Case==2)
+//                colorer_X(6,9,0,3);
+//            if(Case==3||Case==4||Case==5)
+//                colorer_X(6,9,3,6);
+//            if(Case==6||Case==7||Case==8)
+//                colorer_X(6,9,6,9);
+//        }
+
         //colorer lignes verticales
-        if(Carre==0||Carre==3||Carre==6){
-            if(Case==0||Case==3||Case==6)
-                colorer_Y(0,7,0,7);
-            if(Case==1||Case==4||Case==7)
-                colorer_Y(0,9,1,10);
-            if(Case==2||Case==5||Case==8)
-                colorer_Y(0,9,2,11);
-        }
-        //***
-        if(Carre==1||Carre==4||Carre==7){
-            if(Case==0||Case==3||Case==6)
-                colorer_Y(1,8,0,7);
-            if(Case==1||Case==4||Case==7)
-                colorer_Y(1,8,1,8);
-            if(Case==2||Case==5||Case==8)
-                colorer_Y(1,8,2,9);
-        }
-        //***
-        if(Carre==2||Carre==5||Carre==8){
-            if(Case==0||Case==3||Case==6)
-                colorer_Y(2,9,0,7);
-            if(Case==1||Case==4||Case==7)
-                colorer_Y(2,9,1,8);
-            if(Case==2||Case==5||Case==8)
-                colorer_Y(2,9,2,9);
-        }
+//        if(Carre==0||Carre==3||Carre==6){
+//            if(Case==0||Case==3||Case==6)
+//                colorer_Y(0,7,0,7);
+//            if(Case==1||Case==4||Case==7)
+//                colorer_Y(0,9,1,10);
+//            if(Case==2||Case==5||Case==8)
+//                colorer_Y(0,9,2,11);
+//        }
+//
+//        if(Carre==1||Carre==4||Carre==7){
+//            if(Case==0||Case==3||Case==6)
+//                colorer_Y(1,8,0,7);
+//            if(Case==1||Case==4||Case==7)
+//                colorer_Y(1,8,1,8);
+//            if(Case==2||Case==5||Case==8)
+//                colorer_Y(1,8,2,9);
+//        }
+//
+//        if(Carre==2||Carre==5||Carre==8){
+//            if(Case==0||Case==3||Case==6)
+//                colorer_Y(2,9,0,7);
+//            if(Case==1||Case==4||Case==7)
+//                colorer_Y(2,9,1,8);
+//            if(Case==2||Case==5||Case==8)
+//                colorer_Y(2,9,2,9);
+//        }
         emit focusChanged();
     }
 }
@@ -318,8 +354,6 @@ void Grille::colorer_voisins( int Carre,int Case,bool focus){
 void Grille::changer_valeur(int valeur, int Carre,int Case){
     string value =to_string(valeur);
     int ligne, colonne;
-
-    // au lieu de faire plein de if, on peut utiliser case{} qui serait plus élégant
 
     switch(Carre){
         case 0:

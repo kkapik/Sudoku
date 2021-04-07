@@ -19,8 +19,7 @@ Window {
         }
         else{  result.visible=true;
             result.rectangle.color="lightgray";
-            result.rectangle.text1.text="Vous avez échoué,
-essayez une autre fois !";
+            result.rectangle.text1.text="Vous avez échoué, essayez une autre fois !";
         }
     }
     Component.onCompleted:{
