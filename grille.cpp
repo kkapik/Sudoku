@@ -317,160 +317,63 @@ void Grille::colorer_voisins( int Carre,int Case,bool focus){
 
 void Grille::changer_valeur(int valeur, int Carre,int Case){
     string value =to_string(valeur);
-    string indice1 =to_string(Carre);
-    string indice2 =to_string(Case);
     int ligne, colonne;
-    if(indice1=="0"){
-        if(indice2=="0"||indice2=="1"||indice2=="2"){
-            ligne=0;
-        }
-        else if(indice2=="3"||indice2=="4"||indice2=="5"){
-            ligne=1;
-        }
-        else if(indice2=="6"||indice2=="7"||indice2=="8"){
-            ligne=2;
-        }
-        if(indice2=="0"||indice2=="3"||indice2=="6"){colonne=0;}
-        else if(indice2=="1"||indice2=="4"||indice2=="7"){colonne=1;}
-        else if(indice2=="2"||indice2=="5"||indice2=="8"){colonne=2;}
+
+    // au lieu de faire plein de if, on peut utiliser case{} qui serait plus élégant
+
+    if(Carre==0){
+        ligne = Case%3;
+        colonne = Case/3; // comme Case est un int, ca fait la division euclidienne
     }
 
-    if(indice1=="1"){
-        if(indice2=="0"||indice2=="1"||indice2=="2"){
-            ligne=0;
-        }
-        else if(indice2=="3"||indice2=="4"||indice2=="5"){
-            ligne=1;
-        }
-        else if(indice2=="6"||indice2=="7"||indice2=="8"){
-            ligne=2;
-        }
-        if(indice2=="0"||indice2=="3"||indice2=="6"){colonne=3;}
-        else if(indice2=="1"||indice2=="4"||indice2=="7"){colonne=4;}
-        else if(indice2=="2"||indice2=="5"||indice2=="8"){colonne=5;}
+    if(Carre==1){
+        ligne = Case%3;
+        colonne = Case/3+3;
     }
 
-
-    if(indice1=="2"){
-        if(indice2=="0"||indice2=="1"||indice2=="2"){
-            ligne=0;
-        }
-        else if(indice2=="3"||indice2=="4"||indice2=="5"){
-            ligne=1;
-        }
-        else if(indice2=="6"||indice2=="7"||indice2=="8"){
-            ligne=2;
-        }
-        if(indice2=="0"||indice2=="3"||indice2=="6"){colonne=6;}
-        else if(indice2=="1"||indice2=="4"||indice2=="7"){colonne=7;}
-        else if(indice2=="2"||indice2=="5"||indice2=="8"){colonne=8;}
+    if(Carre==2){
+        ligne = Case%3;
+        colonne = Case/3+6;
     }
-    if(indice1=="3"){
-        if(indice2=="0"||indice2=="1"||indice2=="2"){
-            ligne=3;
-        }
-        else if(indice2=="3"||indice2=="4"||indice2=="5"){
-            ligne=4;
-        }
-        else if(indice2=="6"||indice2=="7"||indice2=="8"){
-            ligne=5;
-        }
-        if(indice2=="0"||indice2=="3"||indice2=="6"){colonne=0;}
-        else if(indice2=="1"||indice2=="4"||indice2=="7"){colonne=1;}
-        else if(indice2=="2"||indice2=="5"||indice2=="8"){colonne=2;}
-    }
-    if(indice1=="4"){
-        if(indice2=="0"||indice2=="1"||indice2=="2"){
-            ligne=3;
-        }
-        else if(indice2=="3"||indice2=="4"||indice2=="5"){
-            ligne=4;
-        }
-        else if(indice2=="6"||indice2=="7"||indice2=="8"){
-            ligne=5;
-        }
-        if(indice2=="0"||indice2=="3"||indice2=="6"){colonne=3;}
-        else if(indice2=="1"||indice2=="4"||indice2=="7"){colonne=4;}
-        else if(indice2=="2"||indice2=="5"||indice2=="8"){colonne=5;}
-    }
-    if(indice1=="5"){
-        if(indice2=="0"||indice2=="1"||indice2=="2"){
-            ligne=3;
-        }
-        else if(indice2=="3"||indice2=="4"||indice2=="5"){
-            ligne=4;
-        }
-        else if(indice2=="6"||indice2=="7"||indice2=="8"){
-            ligne=5;
-        }
-        if(indice2=="0"||indice2=="3"||indice2=="6"){colonne=6;}
-        else if(indice2=="1"||indice2=="4"||indice2=="7"){colonne=7;}
-        else if(indice2=="2"||indice2=="5"||indice2=="8"){colonne=8;}
-    }
-    if(indice1=="6"){
-        if(indice2=="0"||indice2=="1"||indice2=="2"){
-            ligne=6;
-        }
-        else if(indice2=="3"||indice2=="4"||indice2=="5"){
-            ligne=7;
-        }
-        else if(indice2=="6"||indice2=="7"||indice2=="8"){
-            ligne=8;
-        }
-        if(indice2=="0"||indice2=="3"||indice2=="6"){colonne=0;}
-        else if(indice2=="1"||indice2=="4"||indice2=="7"){colonne=1;}
-        else if(indice2=="2"||indice2=="5"||indice2=="8"){colonne=2;}
-    }
-    if(indice1=="7"){
-        if(indice2=="0"||indice2=="1"||indice2=="2"){
-            ligne=6;
-        }
-        else if(indice2=="3"||indice2=="4"||indice2=="5"){
-            ligne=7;
-        }
-        else if(indice2=="6"||indice2=="7"||indice2=="8"){
-            ligne=8;
-        }
-        if(indice2=="0"||indice2=="3"||indice2=="6"){colonne=3;}
-        else if(indice2=="1"||indice2=="4"||indice2=="7"){colonne=4;}
-        else if(indice2=="2"||indice2=="5"||indice2=="8"){colonne=5;}
-    }
-    if(indice1=="8"){
-        if(indice2=="0"||indice2=="1"||indice2=="2"){
-            ligne=6;
-        }
-        else if(indice2=="3"||indice2=="4"||indice2=="5"){
-            ligne=7;
-        }
-        else if(indice2=="6"||indice2=="7"||indice2=="8"){
-            ligne=8;
-        }
-        if(indice2=="0"||indice2=="3"||indice2=="6"){colonne=6;}
-        else if(indice2=="1"||indice2=="4"||indice2=="7"){colonne=7;}
-        else if(indice2=="2"||indice2=="5"||indice2=="8"){colonne=8;}
+    if(Carre==3){
+        ligne = Case%3+3;
+        colonne = Case/3;
     }
 
+    if(Carre==4){
+        ligne = Case%3+3;
+        colonne = Case/3+3;
+    }
 
+    if(Carre==5){
+        ligne = Case%3+3;
+        colonne = Case/3+3;
+    }
+
+    if(Carre==6){
+        ligne = Case%3+6;
+        colonne = Case/3;
+    }
+
+    if(Carre==7){
+        ligne = Case%3+6;
+        colonne = Case/3+3;
+    }
+
+    if(Carre==8){
+        ligne = Case%3+6;
+        colonne = Case/3+6;
+    }
 
     grille[ligne][colonne]=value;
 
+    // on affiche la grille
     for(int i=0; i<9; i++) {
         cout << endl;
         for(int j=0; j<9; j++)
             cout << grille[i][j] << ", ";
     }
     cout <<endl<<endl;
-
-    /*for (int i =0 ; i<9;i++){
-for(int j =0;j<9;j++){
-    if(grille[i][j] =="1"||grille[i][j] =="2"||grille[i][j] =="3"||grille[i][j] =="4"||grille[i][j] =="5"||grille[i][j] =="6"||grille[i][j] =="7"||grille[i][j] =="8"||grille[i][j] =="9"){
-        cout<<grille[i][j];
-    }
-    else cout<<"_";
-
-}
-cout<<endl;
-}*/
 
 }
 
