@@ -321,53 +321,56 @@ void Grille::changer_valeur(int valeur, int Carre,int Case){
 
     // au lieu de faire plein de if, on peut utiliser case{} qui serait plus élégant
 
-    if(Carre==0){
-        ligne = Case%3;
-        colonne = Case/3; // comme Case est un int, ca fait la division euclidienne
+    switch(Carre){
+        case 0:
+            colonne = Case%3;
+            ligne = Case/3;
+            grille[ligne][colonne]=value;
+            break;
+        case 1:
+            colonne = Case%3;
+            ligne = Case/3+3;
+            grille[ligne][colonne]=value;
+            break;
+        case 2:
+            colonne = Case%3;
+            ligne = Case/3+6;
+            grille[ligne][colonne]=value;
+            break;
+        case 3:
+            colonne = Case%3+3;
+            ligne = Case/3;
+            grille[ligne][colonne]=value;
+            break;
+       case 4:
+            colonne = Case%3+3;
+            ligne = Case/3+3;
+            grille[ligne][colonne]=value;
+            break;
+       case 5:
+            colonne = Case%3+3;
+            ligne = Case/3+6;
+            grille[ligne][colonne]=value;
+            break;
+       case 6:
+            colonne = Case%3+6;
+            ligne = Case/3;
+            grille[ligne][colonne]=value;
+            break;
+       case 7:
+            colonne = Case%3+6;
+            ligne = Case/3+3;
+            grille[ligne][colonne]=value;
+            break;
+       case 8:
+            colonne = Case%3+6;
+            ligne = Case/3+6;
+            grille[ligne][colonne]=value;
+            break;
     }
 
-    if(Carre==1){
-        ligne = Case%3;
-        colonne = Case/3+3;
-    }
 
-    if(Carre==2){
-        ligne = Case%3;
-        colonne = Case/3+6;
-    }
-    if(Carre==3){
-        ligne = Case%3+3;
-        colonne = Case/3;
-    }
-
-    if(Carre==4){
-        ligne = Case%3+3;
-        colonne = Case/3+3;
-    }
-
-    if(Carre==5){
-        ligne = Case%3+3;
-        colonne = Case/3+3;
-    }
-
-    if(Carre==6){
-        ligne = Case%3+6;
-        colonne = Case/3;
-    }
-
-    if(Carre==7){
-        ligne = Case%3+6;
-        colonne = Case/3+3;
-    }
-
-    if(Carre==8){
-        ligne = Case%3+6;
-        colonne = Case/3+6;
-    }
-
-    grille[ligne][colonne]=value;
-
-    // on affiche la grille
+    // affichage de la grille
     for(int i=0; i<9; i++) {
         cout << endl;
         for(int j=0; j<9; j++)
