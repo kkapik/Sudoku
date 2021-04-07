@@ -4,6 +4,7 @@
 #include <QObject>
 #include<string>
 using namespace std;
+
 class Grille : public QObject
 {
     Q_OBJECT

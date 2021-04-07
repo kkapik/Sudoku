@@ -8,25 +8,24 @@
 
 int main(int argc, char *argv[])
 {
-    list<int> liste;
-    liste.push_back(3);
-    liste.push_back(2);
-    bool vrai;
-    list<int> l;
-    l.push_back(3);
-    l.push_back(3);
-    vrai = (liste == l);
-    cout << vrai <<endl;
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-#endif
+//    list<int> liste;
+//    liste.push_back(3);
+//    liste.push_back(2);
+//    bool vrai;
+//    list<int> l;
+//    l.push_back(3);
+//    l.push_back(3);
+//    vrai = (liste == l);
+//    cout << vrai <<endl;
+
+//#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
+//    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+//#endif
 
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QGuiApplication app(argc, argv);
     Grille aGrille ;
-
-
     QQmlApplicationEngine engine;
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
