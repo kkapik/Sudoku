@@ -39,21 +39,21 @@ Grille::Grille(QObject *parent) : QObject(parent)
     }
 
     // je vois vraiment pas à quoi sert ce bloc, peut-être à vérifier que les deux méthodes de création de liste sont identiques
-    list<string> lok;
-    lok.push_back("1");
-    lok.push_back("2");
-    lok.push_back("3");
-    lok.push_back("4");
-    lok.push_back("5");
-    lok.push_back("6");
-    lok.push_back("8");
-    lok.push_back("7");
-    lok.push_back("9");
-    list<string> lcopy = {"1", "2", "3", "4", "5", "6","7","8", "9"};
-    lok.sort();
-    bool vrai;
-    vrai = (lok == lcopy);
-    cout << vrai << endl;
+//    list<string> lok;
+//    lok.push_back("1");
+//    lok.push_back("2");
+//    lok.push_back("3");
+//    lok.push_back("4");
+//    lok.push_back("5");
+//    lok.push_back("6");
+//    lok.push_back("8");
+//    lok.push_back("7");
+//    lok.push_back("9");
+//    list<string> lcopy = {"1", "2", "3", "4", "5", "6","7","8", "9"};
+//    lok.sort();
+//    bool vrai;
+//    vrai = (lok == lcopy);
+//    cout << vrai << endl;
 }
 
 void Grille::verif_matrice(){
@@ -61,15 +61,6 @@ void Grille::verif_matrice(){
 
     bool victoire = true;
     list<string> lok= {"1", "2", "3", "4", "5", "6","7","8", "9"};
-//    lok.push_back("1");
-//    lok.push_back("2");
-//    lok.push_back("3");
-//    lok.push_back("4");
-//    lok.push_back("5");
-//    lok.push_back("6");
-//    lok.push_back("7");
-//    lok.push_back("8");
-//    lok.push_back("9");
 
     // vérification par ligne
     for(int i=0; i<9; i++){
@@ -215,27 +206,18 @@ void Grille::matriceToVectors(){
 
 }
 
-void Grille::colorer_X(int i, int j, int p,int q){
-    // coloriage de la ligne
-    for(int k =i;k<j;k++){
-        for(int m=p;m<q;m++){
+void Grille::colorer_X(int i, int l){
+    // coloriage dans les carrés i à i+3 de la ligne l
+    for(int k =i;k<i+3;k++)
+        for(int m=l*3;m<l*3+3;m++)
             colors[k][m]="lavender";
-        }
-    }
 }
 
-void Grille::colorer_Y(int i, int j, int p, int q  ){
-    int k =i;
-    int m =p;
-    while(k<j){
-        m=p;
-        while(m<q){
+void Grille::colorer_Y(int i, int c){
+    // coloriage dans les carrés i à j de la colonne l
+    for (int k=i;k<i+7;k+=3)
+        for (int m=c;m<c+7;m+=3)
             colors[k][m]="lavender";
-            m+=3;
-        }
-        k+=3;
-    }
-
 }
 
 void Grille::colorer_voisins( int Carre,int Case,bool focus){
@@ -253,100 +235,30 @@ void Grille::colorer_voisins( int Carre,int Case,bool focus){
             colors[Carre][k]="lavender";
         }
 
-        //colorer les lignes horizantales
+        //colorer les lignes horizontales
         switch(Carre/3){
             case 0:
-                colorer_X(0,3,3*(Case/3),Case%3+3);
+                colorer_X(0,Case/3);
                 break;
             case 1:
-                colorer_X(3,6,3*(Case/3),Case%3+3);
+                colorer_X(3,Case/3);
                 break;
             case 2:
-                colorer_X(6,9,3*(Case/3),Case%3+3);
+                colorer_X(6,Case/3);
                 break;
         }
         // colorer les lignes verticales
         switch(Carre%3){
             case 0:
-                if(Case/3==0)
-                    colorer_Y(0,7,0,7);
-                if(Case/3==1)
-                    colorer_Y(0,9,1,10);
-                if(Case/3==2)
-                    colorer_Y(0,9,2,11);
+                colorer_Y(0,Case%3);
                 break;
             case 1:
-                if(Case/3==0)
-                    colorer_Y(1,8,0,7);
-                if(Case/3==1)
-                    colorer_Y(1,8,1,8);
-                if(Case/3==2)
-                    colorer_Y(1,8,2,9);
+                colorer_Y(1,Case%3);
                 break;
             case 2:
-                if(Case/3==0)
-                    colorer_Y(2,9,0,7);
-                if(Case/3==1)
-                    colorer_Y(2,9,1,8);
-                if(Case/3==2)
-                    colorer_Y(2,9,2,9);
+                colorer_Y(2,Case%3);
                 break;
         }
-
-//        if(Carre==0||Carre==1||Carre==2){
-//            if(Case==0||Case==1||Case==2)
-//                colorer_X(0,3,0,3);
-//            if(Case==3||Case==4||Case==5)
-//                colorer_X(0,3,3,6);
-//            if(Case==6||Case==7||Case==8)
-//                colorer_X(0,3,6,9);
-//        }
-//
-//        if(Carre==3||Carre==4||Carre==5){
-//            if(Case==0||Case==1||Case==2)
-//                colorer_X(3,6,0,3);
-//            if(Case==3||Case==4||Case==5)
-//                colorer_X(3,6,3,6);
-//            if(Case==6||Case==7||Case==8)
-//                colorer_X(3,6,6,9);
-//        }
-//
-//        if(Carre==6||Carre==7||Carre==8){
-//            if(Case==0||Case==1||Case==2)
-//                colorer_X(6,9,0,3);
-//            if(Case==3||Case==4||Case==5)
-//                colorer_X(6,9,3,6);
-//            if(Case==6||Case==7||Case==8)
-//                colorer_X(6,9,6,9);
-//        }
-
-        //colorer lignes verticales
-//        if(Carre==0||Carre==3||Carre==6){
-//            if(Case==0||Case==3||Case==6)
-//                colorer_Y(0,7,0,7);
-//            if(Case==1||Case==4||Case==7)
-//                colorer_Y(0,9,1,10);
-//            if(Case==2||Case==5||Case==8)
-//                colorer_Y(0,9,2,11);
-//        }
-//
-//        if(Carre==1||Carre==4||Carre==7){
-//            if(Case==0||Case==3||Case==6)
-//                colorer_Y(1,8,0,7);
-//            if(Case==1||Case==4||Case==7)
-//                colorer_Y(1,8,1,8);
-//            if(Case==2||Case==5||Case==8)
-//                colorer_Y(1,8,2,9);
-//        }
-//
-//        if(Carre==2||Carre==5||Carre==8){
-//            if(Case==0||Case==3||Case==6)
-//                colorer_Y(2,9,0,7);
-//            if(Case==1||Case==4||Case==7)
-//                colorer_Y(2,9,1,8);
-//            if(Case==2||Case==5||Case==8)
-//                colorer_Y(2,9,2,9);
-//        }
         emit focusChanged();
     }
 }

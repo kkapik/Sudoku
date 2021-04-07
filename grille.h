@@ -22,8 +22,8 @@ public:
 
 private:
     void matriceToVectors();
-    void colorer_X(int i, int j, int p, int q  );
-    void colorer_Y(int i, int j, int p, int q  );
+    void colorer_X(int i, int l );
+    void colorer_Y(int i, int c );
     QList<QList<QString>> colors;
     QList<QList<QString>> valeurs;
     string grille[9][9];
