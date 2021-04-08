@@ -4,7 +4,7 @@ import QtQuick.Layouts 1.1
 import QtQuick.Controls 2.15
 
 Window {
-    width: 450
+    width: 700
     height: 200
     visible: true
     title: qsTr("Résultat")
@@ -12,20 +12,14 @@ Window {
 
     Rectangle {
         id: rectangle
-        x: 0
-        y: 0
-        width: 450
-        height: 200
         color: "#ffffff"
+        anchors.fill: parent
         property alias text1 : text1
 
         Text {
             id: text1
-            x: -3
-            y: 47
-            width: 457
-            height: 107
             text: "Text"
+            anchors.fill: parent
             font.pixelSize: 30
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter

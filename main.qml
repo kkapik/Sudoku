@@ -143,7 +143,7 @@ Window {
         y: 660
         width: 132
         height: 55
-        text: qsTr("Check")
+        text: qsTr("Vérifier la grille")
         font.weight: Font.ExtraLight
         font.pointSize: 12
         onClicked: check()
