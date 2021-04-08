@@ -7,7 +7,7 @@
 using namespace std;
 
 Grille::Grille(QObject *parent) : QObject(parent){
-    ifstream myFile("../sudoku/grilles/grilleDebutant.csv");
+    ifstream myFile("../sudoku/grilles/grilleDebutant.csv"); //choisir la grille ici
     string ligne[9];
 
     int i = 0;
@@ -145,6 +145,7 @@ void Grille::colorer_voisins( int Carre,int Case,bool focus){
                 colors[k][j]="white";
             }
         }
+
         // recolore les cases du carré selectionné
         for(int k =0;k<9;k++){
             colors[Carre][k]="#eaeaea";
@@ -174,17 +175,19 @@ void Grille::colorer_voisins( int Carre,int Case,bool focus){
                 colorer_Y(2,Case%3);
                 break;
         }
-        Print();
         // coloriage des cases avec le même chiffre -- ne fonctionne pour l'instant
-//        if (grille[Carre][Case]!=""){
-//            for (int i=0;i<9;i++){
-//                for (int j=0;j<9;j++){
-//                    if (grille[i][j]==grille[3*(Carre/3)+(Case/3)][3*(Case%3)+(Case%3)]){
-//                        colors[i][j]="#9eaac8";
-//                    }
-//                }
-//            }
-//        }
+        if (grille[3*(Carre/3)+(Case/3)][3*(Carre%3)+(Case%3)]!= ""){
+            for (int i=0;i<9;i++){
+                for (int j=0;j<9;j++){
+                    if (grille[3*(i/3)+(j/3)][3*(i%3)+(j%3)]==grille[3*(Carre/3)+(Case/3)][3*(Carre%3)+(Case%3)]){
+                        colors[i][j]="#9eaac8";
+
+                    }
+                }
+            }
+        }
+        Print();
+
         emit focusChanged();
     }
 }
