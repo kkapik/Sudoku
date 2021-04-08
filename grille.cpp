@@ -121,7 +121,6 @@ void Grille::colorer_Y(int i, int c){
 }
 
 void Grille::colorer_voisins( int Carre,int Case,bool focus){
-    cout << Carre << "  " << Case << endl;
 
     if(focus){
         // reset les couleurs de toute la grille au blanc
@@ -160,17 +159,16 @@ void Grille::colorer_voisins( int Carre,int Case,bool focus){
                 break;
         }
         Print();
-
-        // coloriage des cases avec le même chiffre
-        if (grille[Carre][Case]!=""){
-            for (int i=0;i<9;i++){
-                for (int j=0;j<9;j++){
-                    if (grille[i][j]==grille[Carre][Case]){
-                        colors[i][j]="green";
-                    }
-                }
-            }
-        }
+        // coloriage des cases avec le même chiffre -- ne fonctionne pour l'instant
+//        if (grille[Carre][Case]!=""){
+//            for (int i=0;i<9;i++){
+//                for (int j=0;j<9;j++){
+//                    if (grille[i][j]==grille[Carre][Case]){
+//                        colors[i][j]="green";
+//                    }
+//                }
+//            }
+//        }
         emit focusChanged();
     }
 }
