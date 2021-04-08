@@ -1,13 +1,14 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
-#include  "grille.h"
 #include <iostream>
 #include <string>
 #include <QQmlContext>
 
+#include  "grille.h"
 
-int main(int argc, char *argv[])
-{
+
+
+int main(int argc, char *argv[]){
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QGuiApplication app(argc, argv);

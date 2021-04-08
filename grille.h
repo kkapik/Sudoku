@@ -15,18 +15,19 @@ class Grille : public QObject
 
 public:
     explicit Grille(QObject *parent = nullptr);
-    Q_INVOKABLE void changer_valeur(int valeur, int grandCase,int petiteCase);
-    Q_INVOKABLE void colorer_voisins( int grandCase,int petiteCase, bool focus);
+    Q_INVOKABLE void changer_valeur(int valeur, int Carre,int Case);
+    Q_INVOKABLE void colorer_voisins( int Carre,int Case, bool focus);
     Q_INVOKABLE void verif_matrice( );
+    void Print();
 
 
 private:
     void matriceToVectors();
     void colorer_X(int i, int l );
     void colorer_Y(int i, int c );
-    QList<QList<QString>> colors;
-    QList<QList<QString>> valeurs;
-    string grille[9][9];
+    QList<QList<QString>> colors;   // contient les couleurs de chaque case
+    QList<QList<QString>> valeurs;  // contient les valeurs de chaque case sous forme de Qstring
+    string grille[9][9];            // contient les valeurs de chaque case sous forme de string
     int verif;
 
 

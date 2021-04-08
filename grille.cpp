@@ -1,16 +1,19 @@
-#include "grille.h"
 #include<iostream>
 #include <fstream>
 #include <typeinfo>
 #include <string>
+
+#include "grille.h"
 using namespace std;
 
-Grille::Grille(QObject *parent) : QObject(parent)
-{
-    int i = 0;
-    ifstream myFile("D:/Centrale/2A/S8/A-11_Programmation_C++/projet/Sudoku/grilles/grilleDebutant.csv");
+Grille::Grille(QObject *parent) : QObject(parent){
+    ifstream myFile("C:/Users/Simon/Documents/travail/ECL/Electifs/Programmation des interfaces graphiques en C++/Projet/projet_sudoku_v2/sudoku/grilles/grilleDebutant.csv");
     string ligne[9];
+
+    int i = 0;
+
     while(myFile.good() & (i<9)){
+        cout << "test" << endl;
         getline(myFile,ligne[0],'|');
         getline(myFile,ligne[1],'|');
         getline(myFile,ligne[2],'|');
@@ -27,6 +30,7 @@ Grille::Grille(QObject *parent) : QObject(parent)
         }
         i++;
     }
+    Print();
     matriceToVectors();
 
     // coloriage des cases en blanc
@@ -37,28 +41,10 @@ Grille::Grille(QObject *parent) : QObject(parent)
     for(int j =0;j<9;j++){
         colors.push_back(colors_case);
     }
-
-    // je vois vraiment pas à quoi sert ce bloc, peut-être à vérifier que les deux méthodes de création de liste sont identiques
-//    list<string> lok;
-//    lok.push_back("1");
-//    lok.push_back("2");
-//    lok.push_back("3");
-//    lok.push_back("4");
-//    lok.push_back("5");
-//    lok.push_back("6");
-//    lok.push_back("8");
-//    lok.push_back("7");
-//    lok.push_back("9");
-//    list<string> lcopy = {"1", "2", "3", "4", "5", "6","7","8", "9"};
-//    lok.sort();
-//    bool vrai;
-//    vrai = (lok == lcopy);
-//    cout << vrai << endl;
 }
 
 void Grille::verif_matrice(){
     // verifie si la grille remplie par le joueur vérifie les règles du sudoku ou non
-
     bool victoire = true;
     list<string> lok= {"1", "2", "3", "4", "5", "6","7","8", "9"};
 
@@ -223,12 +209,15 @@ void Grille::changer_valeur(int valeur, int Carre,int Case){
     grille[ligne][colonne]=value;
 
     // affichage de la grille
+    Print();
+
+}
+
+void Grille::Print(){
     for(int i=0; i<9; i++) {
         cout << endl;
         for(int j=0; j<9; j++)
             cout << grille[i][j] << ", ";
     }
     cout <<endl<<endl;
-
 }
-
