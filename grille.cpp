@@ -91,6 +91,7 @@ void Grille::set_chiffre_actif(int i){
     }
     else{
         chiffre_actif = i;
+        changer_valeur(i, caseselected[0], caseselected[1]);
         cout << "selection de " << i  << endl;
     }
 
@@ -134,6 +135,8 @@ void Grille::colorer_Y(int i, int c){
 }
 
 void Grille::colorer_voisins( int Carre,int Case,bool focus){
+    caseselected[0] = Carre;
+    caseselected[1]= Case;
 
     if(focus){
         // reset les couleurs de toute la grille au blanc
@@ -229,7 +232,7 @@ void Grille::changer_valeur(int valeur, int Carre,int Case){
             break;
     }
     grille[ligne][colonne]=value;
-
+    matriceToVectors();
     // affichage de la grille
     Print();
 

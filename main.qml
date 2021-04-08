@@ -28,6 +28,15 @@ Window {
     function set_chiffre_actif(i){
         vueObjetCpt.set_chiffre_actif(i);
         var chiffre_IsActif = vueObjetCpt.coloration
+        var values = vueObjetCpt.values;
+        var l
+        var c
+        for(l=0;l<9;l++){
+            for(c=0;c<9;c++){
+                var v = repeater.itemAt(l).rep.itemAt(c).input
+                v.text=values[l][c];
+            }
+        }
     }
 
     Component.onCompleted:{

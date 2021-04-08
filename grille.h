@@ -33,6 +33,7 @@ private:
     int verif;
     int chiffre_actif;
     int chiffre_IsActif;
+    int caseselected[2] = {0,0};
 
 
 
