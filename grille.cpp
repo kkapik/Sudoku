@@ -85,16 +85,7 @@ void Grille::verif_matrice(){
 }
 
 void Grille::set_chiffre_actif(int i){
-    if (i == chiffre_actif){
-        chiffre_actif = NULL;
-        cout << "deselection" << endl;
-    }
-    else{
-        chiffre_actif = i;
-        changer_valeur(i, caseselected[0], caseselected[1]);
-        cout << "selection de " << i  << endl;
-    }
-
+    changer_valeur(i, caseselected[0], caseselected[1]);
     emit chiffreActifChanged();
 }
 
