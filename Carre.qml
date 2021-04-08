@@ -24,6 +24,13 @@ Item {
                 v.text=values[l][c];
             }
         }
+        var colors = vueObjetCpt.colors;
+        for(i=0;i<9;i++){
+            for(j=0;j<9;j++){
+                var w = repeater.itemAt(i).rep.itemAt(j)
+                w.color=colors[i][j];
+            }
+        }
     }
 
     function changer_couleur(app, focus){
@@ -38,12 +45,12 @@ Item {
             }
         }
         var colors = vueObjetCpt.colors;
-            for(i=0;i<9;i++){
-                for(j=0;j<9;j++){
-                    var v = repeater.itemAt(i).rep.itemAt(j)
-                    v.color=colors[i][j];
-                }
+        for(i=0;i<9;i++){
+            for(j=0;j<9;j++){
+                var v = repeater.itemAt(i).rep.itemAt(j)
+                v.color=colors[i][j];
             }
+        }
     }
     property alias rep : repeater1
 
@@ -65,7 +72,7 @@ Item {
 
                 TextInput{
                     id:input
-                    color:'#444444'
+                    color:'#333333'
                     width : parent.width
                     height:parent.height
                     horizontalAlignment: Text.AlignHCenter

@@ -234,19 +234,25 @@ void Grille::changer_valeur(int valeur, int Carre,int Case){
 
     // test sur le carré
     if(value!=""){
-        for (int i=0;i<3;i++)
+        for (int i=0;i<3;i++){
             for (int j=0;j<3;j++){
                 if (grille[3*(ligne/3)+i][3*(colonne/3)+j]==value){
                     possible=false;
+                    cout <<3*((3*(ligne/3)+i)/3)+(3*(colonne/3)+j)/3<<3*((3*(ligne/3)+i)%3)+(3*(colonne/3)+j)%3<<endl;
+                    colors[3*((3*(ligne/3)+i)/3)+(3*(colonne/3)+j)/3][3*((3*(ligne/3)+i)%3)+(3*(colonne/3)+j)%3]="#d14545";
                     break;
                 }
             }
-
+        }
         // test sur les lignes et colonnes
         for (int j=0;j<9;j++){
-            if ((grille[ligne][j]==value && j!=colonne)|| (grille[j][colonne]==value && j!=ligne)){
+            if (grille[j][colonne]==value && j!=ligne){
                 possible=false;
-                break;
+                colors[3*(j/3)+(colonne)/3][3*(j%3)+(colonne)%3]="#d14545";
+            }
+            else if (grille[ligne][j]==value && j!=colonne){
+                possible=false;
+                colors[3*(ligne/3)+(j)/3][3*(ligne%3)+(j)%3]="#d14545";
             }
         }
     }
