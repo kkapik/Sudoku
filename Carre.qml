@@ -15,7 +15,17 @@ Item {
                 }
             }
         }
+        var values = vueObjetCpt.values;
+        var l
+        var c
+        for(l=0;l<9;l++){
+            for(c=0;c<9;c++){
+                var v = repeater.itemAt(l).rep.itemAt(c).input
+                v.text=values[l][c];
+            }
+        }
     }
+
     function changer_couleur(app, focus){
         var i;
         var j;

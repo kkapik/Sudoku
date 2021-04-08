@@ -153,30 +153,30 @@ void Grille::colorer_voisins( int Carre,int Case,bool focus){
 
         //colorer les lignes horizontales
         switch(Carre/3){
-            case 0:
-                colorer_X(0,Case/3);
-                break;
-            case 1:
-                colorer_X(3,Case/3);
-                break;
-            case 2:
-                colorer_X(6,Case/3);
-                break;
+        case 0:
+            colorer_X(0,Case/3);
+            break;
+        case 1:
+            colorer_X(3,Case/3);
+            break;
+        case 2:
+            colorer_X(6,Case/3);
+            break;
         }
         // colorer les lignes verticales
         switch(Carre%3){
-            case 0:
-                colorer_Y(0,Case%3);
-                break;
-            case 1:
-                colorer_Y(1,Case%3);
-                break;
-            case 2:
-                colorer_Y(2,Case%3);
-                break;
+        case 0:
+            colorer_Y(0,Case%3);
+            break;
+        case 1:
+            colorer_Y(1,Case%3);
+            break;
+        case 2:
+            colorer_Y(2,Case%3);
+            break;
         }
         // coloriage des cases avec le même chiffre -- ne fonctionne pour l'instant
-        if (grille[3*(Carre/3)+(Case/3)][3*(Carre%3)+(Case%3)]!= ""){
+        if (grille[3*(Carre/3)+(Case/3)][3*(Carre%3)+(Case%3)]!= "" && grille[3*(Carre/3)+(Case/3)][3*(Carre%3)+(Case%3)]!="0"){
             for (int i=0;i<9;i++){
                 for (int j=0;j<9;j++){
                     if (grille[3*(i/3)+(j/3)][3*(i%3)+(j%3)]==grille[3*(Carre/3)+(Case/3)][3*(Carre%3)+(Case%3)]){
@@ -194,48 +194,80 @@ void Grille::colorer_voisins( int Carre,int Case,bool focus){
 
 void Grille::changer_valeur(int valeur, int Carre,int Case){
     string value =to_string(valeur);
-    int ligne, colonne;
-
-    switch(Carre){
-        case 0:
-            colonne = Case%3;
-            ligne = Case/3;
-            break;
-        case 1:
-            colonne = Case%3+3;
-            ligne = Case/3;
-            break;
-        case 2:
-            colonne = Case%3+6;
-            ligne = Case/3;
-            break;
-        case 3:
-            colonne = Case%3;
-            ligne = Case/3+3;
-            break;
-       case 4:
-            colonne = Case%3+3;
-            ligne = Case/3+3;
-            break;
-       case 5:
-            colonne = Case%3+6;
-            ligne = Case/3+3;
-            break;
-       case 6:
-            colonne = Case%3;
-            ligne = Case/3+6;
-            break;
-       case 7:
-            colonne = Case%3+3;
-            ligne = Case/3+6;
-            break;
-       case 8:
-            colonne = Case%3+6;
-            ligne = Case/3+6;
-            break;
+    if (value == "0"){
+        value="";
     }
-    grille[ligne][colonne]=value;
+
+    int ligne, colonne;
+    switch(Carre){
+    case 0:
+        colonne = Case%3;
+        ligne = Case/3;
+        break;
+    case 1:
+        colonne = Case%3+3;
+        ligne = Case/3;
+        break;
+    case 2:
+        colonne = Case%3+6;
+        ligne = Case/3;
+        break;
+    case 3:
+        colonne = Case%3;
+        ligne = Case/3+3;
+        break;
+    case 4:
+        colonne = Case%3+3;
+        ligne = Case/3+3;
+        break;
+    case 5:
+        colonne = Case%3+6;
+        ligne = Case/3+3;
+        break;
+    case 6:
+        colonne = Case%3;
+        ligne = Case/3+6;
+        break;
+    case 7:
+        colonne = Case%3+3;
+        ligne = Case/3+6;
+        break;
+    case 8:
+        colonne = Case%3+6;
+        ligne = Case/3+6;
+        break;
+    }
+
+    // on teste si les règles sont respectées
+    bool possible=true;
+
+    // test sur le carré
+    if(value!=""){
+        for (int i=0;i<3;i++)
+            for (int j=0;j<3;j++){
+                if (grille[3*(ligne/3)+i][3*(colonne/3)+j]==value){
+                    possible=false;
+                    break;
+                }
+            }
+
+        // test sur les lignes et colonnes
+        for (int j=0;j<9;j++){
+            if ((grille[ligne][j]==value && j!=colonne)|| (grille[j][colonne]==value && j!=ligne)){
+                possible=false;
+                break;
+            }
+        }
+    }
+
+    if(possible)
+        grille[ligne][colonne]=value;
+    else
+        cout << "impossible de modifier la valeur" << endl;
+
+
     matriceToVectors();
+
     // affichage de la grille
     Print();
 
