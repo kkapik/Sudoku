@@ -42,6 +42,7 @@ Item {
         x: 3; y:3
         rows:3; columns:3; spacing :2
 
+
         Repeater{ id : repeater1
             model : 9
 
@@ -49,6 +50,8 @@ Item {
                 color : "white"
                 width : 68; height: 68
                 property alias input : input
+                border.width : 2
+                border.color : "black"
 
                 TextInput{
                     id:input

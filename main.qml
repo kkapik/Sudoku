@@ -5,9 +5,9 @@ import QtQuick.Controls 2.15
 
 Window {
     id : root
-    color: 'black'
-    width: 650
-    height: 712
+    color: '#FBEBE0'
+    width: 650+5
+    height: 712+5
     visible: true
     title: qsTr("Sudoku")
 
@@ -23,6 +23,11 @@ Window {
             result.rectangle.color="lightgray";
             result.rectangle.text1.text="Vous avez échoué, essayez une autre fois !";
         }
+    }
+
+    function set_chiffre_actif(i){
+        vueObjetCpt.set_chiffre_actif(i);
+        var chiffre_IsActif = vueObjetCpt.coloration
     }
 
     Component.onCompleted:{
@@ -102,6 +107,16 @@ Window {
         }
     }
     property alias repeater : repeater
+
+    Rectangle{
+        id : background
+        x:3
+        y:3
+        color : "black"
+        width : childrenRect.width+6
+        height : childrenRect.height+6
+
+
     Grid{
         id : grid
         x: 3
@@ -109,7 +124,6 @@ Window {
         rows:3
         columns:3
         spacing :2
-
         Repeater{
             id : repeater
             model : 9
@@ -121,11 +135,12 @@ Window {
             }
         }
     }
+}
 
     Button {
-        id: button
+        id: button_check
         x: 8
-        y: 652
+        y: 660
         width: 132
         height: 55
         text: qsTr("Check")
@@ -133,8 +148,119 @@ Window {
         font.pointSize: 12
         onClicked: check()
     }
+
     Resultat{
         id :result
-        visible: false}
+        visible: false
+    }
+
+    Button {
+        id: button1
+        x: 200
+        y: 660
+        width: 40
+        height: 40
+        text: qsTr("1")
+        font.weight: Font.ExtraLight
+        font.pointSize: 12
+        onClicked: set_chiffre_actif(1)
+    }
+
+    Button {
+        id: button2
+        x: 250
+        y: 660
+        width: 40
+        height: 40
+        text: qsTr("2")
+        font.weight: Font.ExtraLight
+        font.pointSize: 12
+        onClicked: set_chiffre_actif(2)
+    }
+
+    Button {
+        id: button3
+        x: 300
+        y: 660
+        width: 40
+        height: 40
+        text: qsTr("3")
+        font.weight: Font.ExtraLight
+        font.pointSize: 12
+        onClicked: set_chiffre_actif(3)
+    }
+
+    Button {
+        id: button4
+        x: 350
+        y: 660
+        width: 40
+        height: 40
+        text: qsTr("4")
+        font.weight: Font.ExtraLight
+        font.pointSize: 12
+        onClicked: set_chiffre_actif(4)
+    }
+
+    Button {
+        id: button5
+        x: 400
+        y: 660
+        width: 40
+        height: 40
+        text: qsTr("5")
+        font.weight: Font.ExtraLight
+        font.pointSize: 12
+        onClicked: set_chiffre_actif(5)
+    }
+
+    Button {
+        id: button6
+        x: 450
+        y: 660
+        width: 40
+        height: 40
+        text: qsTr("6")
+        font.weight: Font.ExtraLight
+        font.pointSize: 12
+        onClicked: set_chiffre_actif(6)
+    }
+
+    Button {
+        id: button7
+        x: 500
+        y: 660
+        width: 40
+        height: 40
+        text: qsTr("7")
+        font.weight: Font.ExtraLight
+        font.pointSize: 12
+        onClicked: set_chiffre_actif(7)
+    }
+
+    Button {
+        id: button8
+        x: 550
+        y: 660
+        width: 40
+        height: 40
+        text: qsTr("8")
+        font.weight: Font.ExtraLight
+        font.pointSize: 12
+        onClicked: set_chiffre_actif(8)
+    }
+
+    Button {
+        id: button9
+        x: 600
+        y: 660
+        width: 40
+        height: 40
+        text: qsTr("9")
+        font.weight: Font.ExtraLight
+        font.pointSize: 12
+        onClicked: set_chiffre_actif(9)
+    }
+
 }
 

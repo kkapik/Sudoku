@@ -84,6 +84,19 @@ void Grille::verif_matrice(){
     emit verifClicked();
 }
 
+void Grille::set_chiffre_actif(int i){
+    if (i == chiffre_actif){
+        chiffre_actif = NULL;
+        cout << "deselection" << endl;
+    }
+    else{
+        chiffre_actif = i;
+        cout << "selection de " << i  << endl;
+    }
+
+    emit chiffreActifChanged();
+}
+
 void Grille::matriceToVectors(){
     //passage d'un array nommé grille de taille 9x9 de string à valeurs qui est une QList<QList<QString>>
     QList<QString> case1,case2,case3,case4,case5,case6,case7,case8,case9;
