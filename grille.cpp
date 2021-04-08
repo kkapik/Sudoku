@@ -105,50 +105,20 @@ void Grille::matriceToVectors(){
 
     // on peut encore simplifier tout ca
 
-    for(int i=0;i<3;i++)
-        for (int j=0;j<3;j++)
+    for(int i=0;i<3;i++){
+        for (int j=0;j<3;j++){
             case1.append(QString::fromStdString(grille[i][j]));
-    valeurs.push_back(case1);
-
-    for(int i=0;i<3;i++)
-        for (int j=3;j<6;j++)
-            case2.append(QString::fromStdString(grille[i][j]));
-    valeurs.push_back(case2);
-
-    for(int i=0;i<3;i++)
-        for (int j=6;j<9;j++)
-            case3.append(QString::fromStdString(grille[i][j]));
-    valeurs.push_back(case3);
-
-    for(int i=3;i<6;i++)
-        for (int j=0;j<3;j++)
-            case4.append(QString::fromStdString(grille[i][j]));
-    valeurs.push_back(case4);
-
-    for(int i=3;i<6;i++)
-        for (int j=3;j<6;j++)
-            case5.append(QString::fromStdString(grille[i][j]));
-    valeurs.push_back(case5);
-
-    for(int i=3;i<6;i++)
-        for (int j=6;j<9;j++)
-            case6.append(QString::fromStdString(grille[i][j]));
-    valeurs.push_back(case6);
-
-    for(int i=6;i<9;i++)
-        for (int j=0;j<3;j++)
-            case7.append(QString::fromStdString(grille[i][j]));
-    valeurs.push_back(case7);
-
-    for(int i=6;i<9;i++)
-        for (int j=3;j<6;j++)
-            case8.append(QString::fromStdString(grille[i][j]));
-    valeurs.push_back(case8);
-
-    for(int i=6;i<9;i++)
-        for (int j=6;j<9;j++)
-            case9.append(QString::fromStdString(grille[i][j]));
-    valeurs.push_back(case9);
+            case2.append(QString::fromStdString(grille[i][j+3]));
+            case3.append(QString::fromStdString(grille[i][j+6]));
+            case4.append(QString::fromStdString(grille[i+3][j]));
+            case5.append(QString::fromStdString(grille[i+3][j+3]));
+            case6.append(QString::fromStdString(grille[i+3][j+6]));
+            case7.append(QString::fromStdString(grille[i+6][j]));
+            case8.append(QString::fromStdString(grille[i+6][j+3]));
+            case9.append(QString::fromStdString(grille[i+6][j+6]));
+        }
+    }
+    valeurs = {case1,case2,case3,case4,case5,case6,case7,case8,case9};
 }
 
 void Grille::colorer_X(int i, int l){
@@ -216,50 +186,41 @@ void Grille::changer_valeur(int valeur, int Carre,int Case){
         case 0:
             colonne = Case%3;
             ligne = Case/3;
-            grille[ligne][colonne]=value;
             break;
         case 1:
             colonne = Case%3+3;
             ligne = Case/3;
-            grille[ligne][colonne]=value;
             break;
         case 2:
             colonne = Case%3+6;
             ligne = Case/3;
-            grille[ligne][colonne]=value;
             break;
         case 3:
             colonne = Case%3;
             ligne = Case/3+3;
-            grille[ligne][colonne]=value;
             break;
        case 4:
             colonne = Case%3+3;
             ligne = Case/3+3;
-            grille[ligne][colonne]=value;
             break;
        case 5:
             colonne = Case%3+6;
             ligne = Case/3+3;
-            grille[ligne][colonne]=value;
             break;
        case 6:
             colonne = Case%3;
             ligne = Case/3+6;
-            grille[ligne][colonne]=value;
             break;
        case 7:
             colonne = Case%3+3;
             ligne = Case/3+6;
-            grille[ligne][colonne]=value;
             break;
        case 8:
             colonne = Case%3+6;
             ligne = Case/3+6;
-            grille[ligne][colonne]=value;
             break;
     }
-
+    grille[ligne][colonne]=value;
 
     // affichage de la grille
     for(int i=0; i<9; i++) {
