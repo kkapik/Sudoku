@@ -9,6 +9,7 @@ Window {
     visible: true
     title: qsTr("Résultat")
     property alias rectangle : rectangle
+
     Rectangle {
         id: rectangle
         x: 0
@@ -17,6 +18,7 @@ Window {
         height: 200
         color: "#ffffff"
         property alias text1 : text1
+
         Text {
             id: text1
             x: -3

@@ -2,6 +2,7 @@ import QtQuick 2.11
 import QtQuick.Window 2.11
 import QtQuick.Layouts 1.1
 import QtQuick.Controls 2.15
+
 Window {
     id : root
     color: 'black'
@@ -9,6 +10,7 @@ Window {
     height: 712
     visible: true
     title: qsTr("Sudoku")
+
     function check(){
         vueObjetCpt.verif_matrice();
         var verif = vueObjetCpt.verifier;
@@ -22,6 +24,7 @@ Window {
             result.rectangle.text1.text="Vous avez échoué, essayez une autre fois !";
         }
     }
+
     Component.onCompleted:{
         var values=vueObjetCpt.values;
         var i;
@@ -99,17 +102,26 @@ Window {
         }
     }
     property alias repeater : repeater
-    Grid{id : grid
-        x: 3; y:3
-        rows:3; columns:3; spacing :2
-        Repeater{ id : repeater
+    Grid{
+        id : grid
+        x: 3
+        y:3
+        rows:3
+        columns:3
+        spacing :2
+
+        Repeater{
+            id : repeater
             model : 9
+
             Carre{
                 id : case1
                 width : 213
-                height:213}
+                height:213
+            }
         }
     }
+
     Button {
         id: button
         x: 8

@@ -10,7 +10,7 @@ Item {
         for(i=0;i<9;i++){
             for(j=0;j<9;j++){
                 var carr = repeater.itemAt(i).rep.itemAt(j).input
-                if (app=== carr){
+                if (app === carr){
                     vueObjetCpt.changer_valeur(app.text,i,j);
                 }
             }
@@ -22,23 +22,21 @@ Item {
         for(i=0;i<9;i++){
             for(j=0;j<9;j++){
                 var carr = repeater.itemAt(i).rep.itemAt(j).input
-
-                if (app=== carr){
+                if (app === carr){
                     vueObjetCpt.colorer_voisins(i,j,focus);
                 }
             }
         }
         var colors = vueObjetCpt.colors;
-        for(i=0;i<9;i++){
             for(i=0;i<9;i++){
                 for(j=0;j<9;j++){
                     var v = repeater.itemAt(i).rep.itemAt(j)
                     v.color=colors[i][j];
                 }
             }
-        }
     }
     property alias rep : repeater1
+
     Grid{
         id : grid
         x: 3; y:3
@@ -46,10 +44,12 @@ Item {
 
         Repeater{ id : repeater1
             model : 9
+
             Rectangle{
                 color : "white"
                 width : 68; height: 68
                 property alias input : input
+
                 TextInput{
                     id:input
                     color:'blue'

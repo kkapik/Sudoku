@@ -13,7 +13,6 @@ Grille::Grille(QObject *parent) : QObject(parent){
     int i = 0;
 
     while(myFile.good() & (i<9)){
-        cout << "test" << endl;
         getline(myFile,ligne[0],'|');
         getline(myFile,ligne[1],'|');
         getline(myFile,ligne[2],'|');
@@ -122,19 +121,19 @@ void Grille::colorer_Y(int i, int c){
 }
 
 void Grille::colorer_voisins( int Carre,int Case,bool focus){
+    cout << Carre << "  " << Case << endl;
 
     if(focus){
         // reset les couleurs de toute la grille au blanc
         for(int k =0;k<9;k++){
             for(int j =0;j<9;j++){
-
                 colors[k][j]="white";
             }
         }
         // recolore les cases du carré selectionné
-        for(int k =0;k<9;k++){
-            colors[Carre][k]="lavender";
-        }
+//        for(int k =0;k<9;k++){
+//            colors[Carre][k]="lavender";
+//        }
 
         //colorer les lignes horizontales
         switch(Carre/3){
@@ -159,6 +158,18 @@ void Grille::colorer_voisins( int Carre,int Case,bool focus){
             case 2:
                 colorer_Y(2,Case%3);
                 break;
+        }
+        Print();
+
+        // coloriage des cases avec le même chiffre
+        if (grille[Carre][Case]!=""){
+            for (int i=0;i<9;i++){
+                for (int j=0;j<9;j++){
+                    if (grille[i][j]==grille[Carre][Case]){
+                        colors[i][j]="green";
+                    }
+                }
+            }
         }
         emit focusChanged();
     }
