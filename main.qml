@@ -113,6 +113,9 @@ Window {
         x:3
         y:3
         color : "black"
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.verticalCenterOffset: -30
+        anchors.horizontalCenter: parent.horizontalCenter
         width : childrenRect.width+6
         height : childrenRect.height+6
 
@@ -142,8 +145,12 @@ Window {
         x: 8
         y: 660
         width: 132
-        height: 55
+        height: 40
         text: qsTr("Vérifier la grille")
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenterOffset: -250
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottomMargin: 10
         font.weight: Font.ExtraLight
         font.pointSize: 12
         onClicked: check()
@@ -161,6 +168,10 @@ Window {
         width: 40
         height: 40
         text: qsTr("1")
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenterOffset: -120
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottomMargin: 10
         font.weight: Font.ExtraLight
         font.pointSize: 12
         onClicked: set_chiffre_actif(1)
@@ -173,6 +184,10 @@ Window {
         width: 40
         height: 40
         text: qsTr("2")
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenterOffset: -70
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottomMargin: 10
         font.weight: Font.ExtraLight
         font.pointSize: 12
         onClicked: set_chiffre_actif(2)
@@ -185,6 +200,10 @@ Window {
         width: 40
         height: 40
         text: qsTr("3")
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenterOffset: -20
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottomMargin: 10
         font.weight: Font.ExtraLight
         font.pointSize: 12
         onClicked: set_chiffre_actif(3)
@@ -197,6 +216,10 @@ Window {
         width: 40
         height: 40
         text: qsTr("4")
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenterOffset: 30
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottomMargin: 10
         font.weight: Font.ExtraLight
         font.pointSize: 12
         onClicked: set_chiffre_actif(4)
@@ -209,6 +232,10 @@ Window {
         width: 40
         height: 40
         text: qsTr("5")
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenterOffset: 80
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottomMargin: 10
         font.weight: Font.ExtraLight
         font.pointSize: 12
         onClicked: set_chiffre_actif(5)
@@ -221,6 +248,10 @@ Window {
         width: 40
         height: 40
         text: qsTr("6")
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenterOffset: 130
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottomMargin: 10
         font.weight: Font.ExtraLight
         font.pointSize: 12
         onClicked: set_chiffre_actif(6)
@@ -233,6 +264,10 @@ Window {
         width: 40
         height: 40
         text: qsTr("7")
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenterOffset: 180
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottomMargin: 10
         font.weight: Font.ExtraLight
         font.pointSize: 12
         onClicked: set_chiffre_actif(7)
@@ -245,6 +280,10 @@ Window {
         width: 40
         height: 40
         text: qsTr("8")
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenterOffset: 230
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottomMargin: 10
         font.weight: Font.ExtraLight
         font.pointSize: 12
         onClicked: set_chiffre_actif(8)
@@ -257,6 +296,10 @@ Window {
         width: 40
         height: 40
         text: qsTr("9")
+        anchors.bottom: parent.bottom
+        anchors.horizontalCenterOffset: 280
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottomMargin: 10
         font.weight: Font.ExtraLight
         font.pointSize: 12
         onClicked: set_chiffre_actif(9)

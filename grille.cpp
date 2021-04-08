@@ -7,7 +7,7 @@
 using namespace std;
 
 Grille::Grille(QObject *parent) : QObject(parent){
-    ifstream myFile("D:/Centrale/2A/S8/A-11_Programmation_C++/projet_elc-a-master/projet_elc-a-master/grilles/grilleDebutant.csv");
+    ifstream myFile("../projet_elc-a-master/grilles/grilleDebutant.csv");
     string ligne[9];
 
     int i = 0;
