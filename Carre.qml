@@ -47,15 +47,15 @@ Item {
             model : 9
 
             Rectangle{
-                color : "white"
+                color : "#ffffff"
                 width : 68; height: 68
                 property alias input : input
                 border.width : 2
-                border.color : "black"
+                border.color : "#000000"
 
                 TextInput{
                     id:input
-                    color:'blue'
+                    color:'#444444'
                     width : parent.width
                     height:parent.height
                     horizontalAlignment: Text.AlignHCenter

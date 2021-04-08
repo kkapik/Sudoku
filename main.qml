@@ -5,7 +5,7 @@ import QtQuick.Controls 2.15
 
 Window {
     id : root
-    color: '#FBEBE0'
+    color: "#fbebe0"
     width: 650+5
     height: 712+5
     visible: true
@@ -16,12 +16,12 @@ Window {
         var verif = vueObjetCpt.verifier;
         if(verif===1){
             result.visible=true;
-            result.rectangle.color="moccasin";
+            result.rectangle.color="#8ee637";
             result.rectangle.text1.text="Bravo vous avez réussi la partie !";
         }
         else{  result.visible=true;
-            result.rectangle.color="lightgray";
-            result.rectangle.text1.text="Vous avez échoué, essayez une autre fois !";
+            result.rectangle.color="#666666";
+            result.rectangle.text1.text="Il y a une erreur, réessayez !";
         }
     }
 
@@ -38,7 +38,8 @@ Window {
             t.text=values[0][i]
             if(values[0][i]!==''){
                 t.readOnly=true
-                t.color="darkblue"
+                t.color="#000000"
+                t.font.bold = true
             }
         }
         for(i=0;i<9;i++){
@@ -46,7 +47,8 @@ Window {
             k.text=values[1][i]
             if(values[1][i]!==''){
                 k.readOnly=true
-                k.color="darkblue"
+                k.color="#000000"
+                k.font.bold = true
             }
         }
         for(i=0;i<9;i++){
@@ -54,7 +56,8 @@ Window {
             l.text=values[2][i]
             if(values[2][i]!==''){
                 l.readOnly=true
-                l.color="darkblue"
+                l.color="#000000"
+                l.font.bold = true
             }
         }
         for(i=0;i<9;i++){
@@ -62,7 +65,8 @@ Window {
             m.text=values[3][i]
             if(values[3][i]!==''){
                 m.readOnly=true
-                m.color="darkblue"
+                m.color="#000000"
+                m.font.bold = true
             }
         }
         for(i=0;i<9;i++){
@@ -70,7 +74,8 @@ Window {
             n.text=values[4][i]
             if(values[4][i]!==''){
                 n.readOnly=true
-                n.color="darkblue"
+                n.color="#000000"
+                n.font.bold = true
             }
         }
         for(i=0;i<9;i++){
@@ -78,7 +83,8 @@ Window {
             p.text=values[5][i]
             if(values[5][i]!==''){
                 p.readOnly=true
-                p.color="darkblue"
+                p.color="#000000"
+                p.font.bold = true
             }
         }
         for(i=0;i<9;i++){
@@ -86,7 +92,8 @@ Window {
             q.text=values[6][i]
             if(values[6][i]!==''){
                 q.readOnly=true
-                q.color="darkblue"
+                q.color="#000000"
+                q.font.bold = true
             }
         }
         for(i=0;i<9;i++){
@@ -94,7 +101,8 @@ Window {
             s.text=values[7][i]
             if(values[7][i]!==''){
                 s.readOnly=true
-                s.color="darkblue"
+                s.color="#000000"
+                s.font.bold = true
             }
         }
         for(i=0;i<9;i++){
@@ -102,7 +110,8 @@ Window {
             j.text=values[8][i]
             if(values[8][i]!==''){
                 j.readOnly=true
-                j.color="darkblue"
+                j.color="#000000"
+                j.font.bold = true
             }
         }
     }
@@ -148,12 +157,15 @@ Window {
         height: 40
         text: qsTr("Vérifier la grille")
         anchors.bottom: parent.bottom
+        highlighted: false
         anchors.horizontalCenterOffset: -250
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottomMargin: 10
         font.weight: Font.ExtraLight
         font.pointSize: 12
-        onClicked: check()
+        onClicked:{ check();
+            button_check.highlighted = true
+        }
     }
 
     Resultat{
@@ -174,7 +186,9 @@ Window {
         anchors.bottomMargin: 10
         font.weight: Font.ExtraLight
         font.pointSize: 12
-        onClicked: set_chiffre_actif(1)
+        onPressed: {highlighted = true}
+        onReleased: {highlighted= false}
+        onClicked:set_chiffre_actif(1)
     }
 
     Button {
@@ -190,6 +204,8 @@ Window {
         anchors.bottomMargin: 10
         font.weight: Font.ExtraLight
         font.pointSize: 12
+        onPressed: {highlighted = true}
+        onReleased: {highlighted= false}
         onClicked: set_chiffre_actif(2)
     }
 
@@ -206,6 +222,8 @@ Window {
         anchors.bottomMargin: 10
         font.weight: Font.ExtraLight
         font.pointSize: 12
+        onPressed: {highlighted = true}
+        onReleased: {highlighted= false}
         onClicked: set_chiffre_actif(3)
     }
 
@@ -222,6 +240,8 @@ Window {
         anchors.bottomMargin: 10
         font.weight: Font.ExtraLight
         font.pointSize: 12
+        onPressed: {highlighted = true}
+        onReleased: {highlighted= false}
         onClicked: set_chiffre_actif(4)
     }
 
@@ -238,6 +258,8 @@ Window {
         anchors.bottomMargin: 10
         font.weight: Font.ExtraLight
         font.pointSize: 12
+        onPressed: {highlighted = true}
+        onReleased: {highlighted= false}
         onClicked: set_chiffre_actif(5)
     }
 
@@ -254,6 +276,8 @@ Window {
         anchors.bottomMargin: 10
         font.weight: Font.ExtraLight
         font.pointSize: 12
+        onPressed: {highlighted = true}
+        onReleased: {highlighted= false}
         onClicked: set_chiffre_actif(6)
     }
 
@@ -270,6 +294,8 @@ Window {
         anchors.bottomMargin: 10
         font.weight: Font.ExtraLight
         font.pointSize: 12
+        onPressed: {highlighted = true}
+        onReleased: {highlighted= false}
         onClicked: set_chiffre_actif(7)
     }
 
@@ -286,6 +312,8 @@ Window {
         anchors.bottomMargin: 10
         font.weight: Font.ExtraLight
         font.pointSize: 12
+        onPressed: {highlighted = true}
+        onReleased: {highlighted= false}
         onClicked: set_chiffre_actif(8)
     }
 
@@ -302,6 +330,8 @@ Window {
         anchors.bottomMargin: 10
         font.weight: Font.ExtraLight
         font.pointSize: 12
+        onPressed: {highlighted = true}
+        onReleased: {highlighted= false}
         onClicked: set_chiffre_actif(9)
     }
 
