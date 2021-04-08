@@ -29,11 +29,11 @@ private:
     void colorer_Y(int i, int c );
     QList<QList<QString>> colors;   // contient les couleurs de chaque case
     QList<QList<QString>> valeurs;  // contient les valeurs de chaque case sous forme de Qstring
-    string grille[9][9];            // contient les valeurs de chaque case sous forme de string
+    string grille[9][9];
+    int caseselected[2] = {0,0};// contient les valeurs de chaque case sous forme de string
     int verif;
     int chiffre_actif;
     int chiffre_IsActif;
-    int caseselected[2] = {0,0};
 
 
 

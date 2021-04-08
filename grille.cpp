@@ -124,14 +124,14 @@ void Grille::colorer_X(int i, int l){
     // coloriage dans les carrés i à i+3 de la ligne l
     for(int k =i;k<i+3;k++)
         for(int m=l*3;m<l*3+3;m++)
-            colors[k][m]="lavender";
+            colors[k][m]="#eaeaea";
 }
 
 void Grille::colorer_Y(int i, int c){
     // coloriage dans tous les carrés de la colonne i (entre 0 et 2) de la colonne l (entre 0 et 2 également)
     for (int k=i;k<i+7;k+=3)
         for (int m=c;m<c+7;m+=3)
-            colors[k][m]="lavender";
+            colors[k][m]="#eaeaea";
 }
 
 void Grille::colorer_voisins( int Carre,int Case,bool focus){
@@ -146,9 +146,9 @@ void Grille::colorer_voisins( int Carre,int Case,bool focus){
             }
         }
         // recolore les cases du carré selectionné
-//        for(int k =0;k<9;k++){
-//            colors[Carre][k]="lavender";
-//        }
+        for(int k =0;k<9;k++){
+            colors[Carre][k]="#eaeaea";
+        }
 
         //colorer les lignes horizontales
         switch(Carre/3){
@@ -179,8 +179,8 @@ void Grille::colorer_voisins( int Carre,int Case,bool focus){
 //        if (grille[Carre][Case]!=""){
 //            for (int i=0;i<9;i++){
 //                for (int j=0;j<9;j++){
-//                    if (grille[i][j]==grille[Carre][Case]){
-//                        colors[i][j]="green";
+//                    if (grille[i][j]==grille[3*(Carre/3)+(Case/3)][3*(Case%3)+(Case%3)]){
+//                        colors[i][j]="#9eaac8";
 //                    }
 //                }
 //            }

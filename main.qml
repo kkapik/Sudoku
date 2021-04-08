@@ -5,7 +5,7 @@ import QtQuick.Controls 2.15
 
 Window {
     id : root
-    color: "#fbebe0"
+    color: "#e6ecfa"
     width: 650+5
     height: 712+5
     visible: true
